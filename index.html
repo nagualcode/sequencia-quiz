@@ -29,12 +29,22 @@ header{background:linear-gradient(120deg,#0b5cad 0%,#0ea5a4 55%,#7c3aed 100%);co
 main{margin-top:-38px;padding-bottom:40px}
 
 .card{background:var(--card);border-radius:18px;box-shadow:0 1px 2px rgba(15,23,42,.05),0 10px 30px rgba(15,23,42,.07);padding:22px}
+
+/* progress */
+.progress{display:flex;align-items:center;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.progress .lbl{font-size:12px;font-weight:700;color:var(--muted);margin-right:6px}
+.dot{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-size:11px;font-weight:700;color:var(--muted);display:grid;place-items:center;padding:0;font-family:inherit;cursor:default}
+.dot.ok{background:var(--ok);border-color:var(--ok);color:#fff;cursor:pointer}
+.dot.bad{background:var(--bad);border-color:var(--bad);color:#fff;cursor:pointer}
+.dot.open{border-color:var(--brand);color:var(--brand);cursor:pointer}
+.dot.cur{box-shadow:0 0 0 3px rgba(11,92,173,.25)}
+.review{display:none;font-size:13px;background:#eef4ff;color:var(--brand);border-radius:10px;padding:7px 12px;margin-bottom:12px;font-weight:600}
+
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
 .chip{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:#eef4ff;color:var(--brand)}
 .chip.v{background:#f3e8ff;color:var(--accent)}
 .chip.g{background:#e6fbfa;color:#0f766e}
 .chip.n{background:#f1f5f9;color:var(--muted)}
-.round{margin-left:auto;font-size:12px;color:var(--muted);font-weight:600;align-self:center}
 .q{font-size:17px;font-weight:600;margin:0 0 14px}
 .q small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:2px}
 
@@ -55,10 +65,10 @@ canvas{display:block;margin:0 auto}
 /* answers */
 .answers{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
 @media (max-width:560px){.answers{grid-template-columns:1fr}}
-.opt{display:flex;align-items:center;gap:12px;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;cursor:pointer;font:inherit;color:inherit;transition:transform .12s,border-color .12s,box-shadow .12s}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:14px;cursor:pointer;font:inherit;color:inherit;transition:transform .12s,border-color .12s,box-shadow .12s}
 .opt:hover:not(:disabled){border-color:#b9c7e6;transform:translateY(-1px);box-shadow:0 4px 14px rgba(15,23,42,.06)}
 .opt:disabled{cursor:default}
-.opt .ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:16px;color:#fff}
+.opt .ic{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:17px;color:#fff}
 .opt b{display:block;font-size:15px}
 .opt small{color:var(--muted);font-size:12.5px}
 .opt kbd{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 5px}
@@ -82,9 +92,16 @@ canvas{display:block;margin:0 auto}
 .fb .tip{font-size:13.5px;background:#fff;border-radius:10px;padding:9px 12px;border-left:4px solid var(--brand2);margin-top:10px}
 .b{font-family:var(--mono);font-weight:700;padding:0 4px;border-radius:4px}
 .bA{color:var(--A);background:#dcfce7}.bC{color:var(--C);background:#dbeafe}.bG{color:var(--G);background:#e5e7eb}.bT{color:var(--T);background:#ffe4e6}
-.bN,.bR,.bY,.bK,.bM,.bS,.bW{color:#7c3aed;background:#f3e8ff}
-.next{display:none;margin:16px 0 0 auto;background:var(--brand);color:#fff;border:none;border-radius:12px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer}
-.next:hover{filter:brightness(1.08)}
+.bN{color:#7c3aed;background:#f3e8ff}
+
+/* nav */
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px}
+.btn{border-radius:12px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer;border:none}
+.btn.primary{background:var(--brand);color:#fff}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{background:#fff;color:var(--brand);border:1.5px solid var(--line)}
+.btn.ghost:disabled{opacity:.4;cursor:default}
+.btn.final{background:linear-gradient(120deg,#0b5cad,#7c3aed);color:#fff}
 
 /* guide */
 details{margin-top:18px}
@@ -104,6 +121,21 @@ details summary{cursor:pointer;font-weight:700;font-size:15px;padding:4px 0}
 .step b{display:block;margin-bottom:2px}
 .step small{color:var(--muted)}
 .start{background:linear-gradient(120deg,#0b5cad,#0ea5a4);color:#fff;border:none;border-radius:12px;padding:13px 26px;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+
+/* results */
+.results{text-align:center}
+.ring{width:150px;height:150px;margin:6px auto 10px;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;font-size:40px;font-weight:800;letter-spacing:-.03em}
+.ring .num small{font-size:18px;color:var(--muted);font-weight:600}
+.verdict{font-size:26px;font-weight:800;margin:4px 0 2px}
+.results .sub{color:var(--muted);margin:0 0 18px}
+.rlist{text-align:left;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 20px}
+.rlist div{display:flex;align-items:center;gap:10px;padding:9px 14px;font-size:14px;border-bottom:1px solid var(--line)}
+.rlist div:last-child{border-bottom:none}
+.rlist .mk{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:800;flex:none}
+.rlist .meta{margin-left:auto;color:var(--muted);font-size:12.5px;text-align:right}
+
 footer{text-align:center;color:var(--muted);font-size:12px;padding:6px 16px 28px}
 .hidden{display:none!important}
 </style>
@@ -129,17 +161,19 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:6px 16px 28px
   <!-- INTRO -->
   <section id="intro" class="card intro">
     <h2>Mutação real ou artefato?</h2>
-    <p>Em cada desafio você vê um trecho de genoma de arbovírus: a <b>referência</b> e, alinhadas abaixo, <b>2 ou 3 leituras Sanger</b> com seus cromatogramas, como no Trace Editor do MEGA. A posição destacada diverge da referência. Olhe os picos e dê o seu veredito.</p>
+    <p>São <b>10 etapas</b>. Em cada uma você vê um trecho de genoma de arbovírus: a <b>referência</b> e, alinhadas abaixo, <b>2 ou 3 leituras Sanger</b> com seus cromatogramas, como no Trace Editor do MEGA. A posição destacada diverge da referência. Olhe os picos e decida: é uma <b>mutação real</b> ou um <b>artefato</b> do sequenciamento?</p>
     <div class="steps">
       <div class="step"><b>1 · Olhe o pico</b><small>Forma, altura, largura e ruído ao redor, não só a letra chamada.</small></div>
       <div class="step"><b>2 · Compare as fitas</b><small>A variante aparece na forward <i>e</i> na reverse?</small></div>
-      <div class="step"><b>3 · Considere o contexto</b><small>Início/fim da leitura, homopolímeros, picos duplos nos vizinhos.</small></div>
+      <div class="step"><b>3 · Considere o contexto</b><small>Início da leitura, homopolímeros, qualidade Phred.</small></div>
     </div>
     <button class="start" id="startBtn">Começar →</button>
   </section>
 
   <!-- GAME -->
   <section id="game" class="card hidden">
+    <div class="progress" id="progress"></div>
+    <div class="review" id="review"></div>
     <div class="chips" id="chips"></div>
     <p class="q" id="question"></p>
 
@@ -163,25 +197,41 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:6px 16px 28px
     <div class="hint" id="hint"></div>
 
     <div class="fb" id="fb"></div>
-    <div style="display:flex"><button class="next" id="nextBtn">Próximo desafio →</button></div>
+    <div class="nav">
+      <button class="btn ghost" id="prevBtn">← Anterior</button>
+      <button class="btn primary" id="nextBtn">Próxima →</button>
+    </div>
 
     <details>
       <summary>Guia rápido de inspeção</summary>
       <div class="guide">
         <table>
           <tr><th>Veredito</th><th>O que você vê</th><th>No consenso</th></tr>
-          <tr><td><b>Mutação real</b></td><td>Pico único, alto e estreito da base alternativa, em <b>ambas as fitas</b>, numa região de boa qualidade.</td><td>Base alternativa</td></tr>
-          <tr><td><b>Sítio misto</b></td><td>Dois picos sobrepostos <b>só naquela posição</b>, repetidos nas duas fitas; vizinhos limpos.</td><td>Código IUPAC (R, Y, K, M, S, W)</td></tr>
-          <tr><td><b>Artefato</b></td><td>Aparece numa fita só, pico largo/baixo/ruidoso, dye blob (pb ~60–90), fora de fase após homopolímero, ou N sem pico alternativo.</td><td>Base de referência</td></tr>
-          <tr><td><b>Indeterminado</b></td><td>Pontas da leitura nas duas fitas, ruído generalizado, ou picos duplos em toda a leitura (contaminação).</td><td>N · resequenciar</td></tr>
+          <tr><td><b>Mutação real</b></td><td>Pico único, alto e estreito da base alternativa, em <b>ambas as fitas</b>, numa região de boa qualidade. Um N numa fita não anula a mutação se o pico e a outra fita a confirmam.</td><td>Base alternativa</td></tr>
+          <tr><td><b>Artefato</b></td><td>Aparece numa fita só, pico baixo/largo/ruidoso, dye blob (pb ~60–90), leitura fora de fase após homopolímero, ou N sem pico alternativo.</td><td>Base de referência</td></tr>
         </table>
         <ul>
           <li>A leitura reversa já aparece em <b>complemento reverso</b>, alinhada à referência; a numeração de pb dela corre ao contrário.</li>
           <li>Faça o trim das pontas (início ~30–50 pb e fim da leitura) antes de alinhar.</li>
-          <li>Para arbovírus, um sítio misto pode indicar variabilidade intra-hospedeiro ou coinfecção: registre com IUPAC e não "escolha" uma base.</li>
+          <li>Olhe o cromatograma, não só a letra: o basecaller erra para os dois lados.</li>
         </ul>
       </div>
     </details>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" class="card results hidden">
+    <div class="ring">
+      <svg width="150" height="150" viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="64" stroke="#eef2f7" stroke-width="12" fill="none"/>
+        <circle id="ringArc" cx="75" cy="75" r="64" stroke="#16a34a" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="402.1" stroke-dashoffset="402.1" style="transition:stroke-dashoffset 1s ease"/>
+      </svg>
+      <div class="num"><span id="scoreNum">0<small>/10</small></span></div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+    <p class="sub" id="verdictSub"></p>
+    <div class="rlist" id="rlist"></div>
+    <button class="start" id="againBtn">Jogar novamente ↻</button>
   </section>
 </main>
 
@@ -196,8 +246,6 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:6px 16px 28px
 // ---------- helpers ----------
 const BASES = ['A','C','G','T'];
 const COLORS = {A:'#16a34a', C:'#2563eb', G:'#111827', T:'#e11d48', N:'#9ca3af'};
-const IUPAC = {AG:'R', CT:'Y', GT:'K', AC:'M', CG:'S', AT:'W'};
-const iupac = (a,b) => IUPAC[[a,b].sort().join('')];
 const rnd = (a,b) => a + Math.random()*(b-a);
 const rint = (a,b) => Math.floor(rnd(a,b+1));
 const pick = arr => arr[Math.floor(Math.random()*arr.length)];
@@ -205,6 +253,7 @@ const other = (b, ex=[]) => pick(BASES.filter(x => x!==b && !ex.includes(x)));
 const B = x => `<span class="b b${x}">${x}</span>`;
 const $ = s => document.querySelector(s);
 const N = 17;
+const TOTAL = 10;
 
 const VIRUS = [
   ['DENV-1','gene E'],['DENV-2','gene E'],['DENV-2','NS1'],['DENV-3','NS5'],['DENV-4','prM'],
@@ -213,12 +262,10 @@ const VIRUS = [
 ];
 
 const ANSWERS = {
-  real:     {t:'Mutação real',  s:'substituição confirmada',          ic:'✓', c:'#16a34a'},
-  mista:    {t:'Sítio misto',   s:'picos duplos reais · código IUPAC', ic:'⇄', c:'#7c3aed'},
-  artefato: {t:'Artefato',      s:'não é mutação · manter referência', ic:'!', c:'#f59e0b'},
-  indet:    {t:'Indeterminado', s:'qualidade insuficiente · N / refazer', ic:'?', c:'#64748b'}
+  real:     {t:'Mutação real', s:'substituição confirmada · base alternativa no consenso', ic:'✓', c:'#16a34a'},
+  artefato: {t:'Artefato',     s:'não é mutação · manter a base de referência',          ic:'!', c:'#f59e0b'}
 };
-const ORDER = ['real','mista','artefato','indet'];
+const ORDER = ['real','artefato'];
 
 function randRef(n){
   const s = [];
@@ -252,7 +299,6 @@ function finalize(read){
     if (ps.call == null) ps.call = h1 < .2 ? 'N' : b1;
     if (ps.q == null) ps.q = q;
   });
-  // gaussians in column units
   const g = [];
   read.pos.forEach((ps,i) => {
     const s = .17*ps.w;
@@ -267,25 +313,26 @@ function finalize(read){
 
 const READNAME = {F:'leitura F', R:'leitura R', F2:'leitura F2'};
 const NAMES = {
-  real:'Substituição real', real_missed:'Basecaller chamou N', mixed:'Sítio misto',
-  artifact_noise:'Ruído em uma fita', dye_blob:'Dye blob', slippage:'Slippage em homopolímero',
-  contamination:'Template misturado', low_end:'Ponta de baixa qualidade', dropout:'Queda local de sinal'
+  real:'Substituição real', real_missed:'Basecaller chamou N', artifact_noise:'Ruído em uma fita',
+  dye_blob:'Dye blob', slippage:'Slippage em homopolímero', dropout:'Queda local de sinal'
 };
-const POOL = ['real','real','real_missed','mixed','mixed','artifact_noise','artifact_noise',
-              'dye_blob','slippage','contamination','low_end','dropout'];
+// 10 etapas balanceadas: 5 mutações reais, 5 artefatos
+const DECK = ['real','real','real','real_missed','real_missed',
+              'artifact_noise','artifact_noise','dye_blob','slippage','dropout'];
+function shuffled(a){
+  const d = a.slice();
+  for (let i=d.length-1;i>0;i--){ const j = rint(0,i); [d[i],d[j]] = [d[j],d[i]]; }
+  return d;
+}
 
 // ---------- scenario generator ----------
-let lastType = null;
-function genRound(){
-  let type = pick(POOL);
-  if (type === lastType) type = pick(POOL);
-  lastType = type;
-
+function genRound(type){
   const [virus, gene] = pick(VIRUS);
   const gpos = rint(300, 9800);
-  let ref = randRef(N);
+  const ref = randRef(N);
   let t = rint(5, N-6);
-  let fS = rint(140, 420), rS = fS + rint(30, 90);
+  let fS = rint(140, 420);
+  const rS = fS + rint(30, 90);
   let alt = other(ref[t]);
   let reads, answer, cons, explain, tip, hint;
   const mk = (id, start) => makeRead(id, start ?? (id==='R' ? rS : id==='F2' ? fS+rint(-25,25) : fS), ref);
@@ -306,46 +353,27 @@ function genRound(){
     const wi = rint(0,1);
     reads.forEach((r,i) => {
       if (i===wi){
-        const ps = lowPos(.1,.2,{w:1.22, noise:.07, call:'N', q:rint(8,14)});
-        ps.p[alt] = rnd(.48,.6);
+        const ps = lowPos(.06,.12,{w:1.15, noise:.04, call:'N', q:rint(10,16)});
+        ps.p[alt] = rnd(.55,.68);
         r.pos[t] = ps;
       } else r.pos[t] = pos(alt);
     });
     const weak = READNAME[reads[wi].id], good = READNAME[reads[1-wi].id];
     answer='real'; cons=alt;
-    explain = `O basecaller da ${weak} chamou <b>N</b>, mas no cromatograma o pico dominante é ${B(alt)} (só um pouco mais baixo e largo). A ${good} mostra ${B(alt)} limpo e com Phred alto. Corrija o N para ${B(alt)}: um N é indecisão do software, não evidência contra a mutação.`;
+    explain = `O basecaller da ${weak} chamou <b>N</b>, mas no cromatograma o pico dominante é claramente ${B(alt)} (só um pouco mais baixo). A ${good} mostra ${B(alt)} limpo e com Phred alto. Corrija o N para ${B(alt)}: um N é indecisão do software, não evidência contra a mutação.`;
     tip = 'Olhe sempre o pico, não só a letra. O basecaller erra para os dois lados.';
-    hint = 'Qual cor domina o cromatograma onde está o N?';
-    break;
-  }
-  case 'mixed': {
-    reads = [mk('F'), mk('R')];
-    if (Math.random() < .3) reads.push(mk('F2'));
-    const code = iupac(ref[t], alt);
-    reads.forEach(r => {
-      const h = rnd(.6,.88);
-      const ps = pos(ref[t], h);
-      ps.p[alt] = h*rnd(.55,1.15);
-      ps.w = 1.04;
-      ps.q = rint(12,24);
-      ps.call = Math.random() < .5 ? code : (ps.p[alt] > h ? alt : ref[t]);
-      r.pos[t] = ps;
-    });
-    answer='mista'; cons=code;
-    explain = `Na posição há <b>dois picos sobrepostos</b> (${B(ref[t])} e ${B(alt)}) em todas as leituras, enquanto as bases vizinhas têm picos únicos e limpos. É um sítio misto real: variabilidade intra-hospedeiro (quasiespécies) ou coinfecção. Registre com o código IUPAC ${B(code)} (${ref[t]}/${alt}).`;
-    tip = 'Pico duplo só num sítio, repetido nas duas fitas = sítio misto. Pico duplo em todo lugar = problema na amostra.';
-    hint = 'Há mais de uma cor de pico na mesma posição? E nos vizinhos?';
+    hint = 'Qual cor domina o cromatograma onde está o N? O que a outra fita diz?';
     break;
   }
   case 'artifact_noise': {
     reads = [mk('F'), mk('R')];
-    if (Math.random() < .3) reads.push(mk('F2'));
+    if (Math.random() < .4) reads.push(mk('F2'));
     const bi = rint(0,1);
     const bad = reads[bi];
-    const ps = lowPos(.1,.24,{w:1.5, noise:.15, call:alt});
-    ps.p[alt] = rnd(.32,.44); ps.p[ref[t]] = rnd(.14,.22);
+    const ps = lowPos(.1,.22,{w:1.5, noise:.15, call:alt});
+    ps.p[alt] = rnd(.32,.42); ps.p[ref[t]] = rnd(.14,.2);
     bad.pos[t] = ps;
-    [t-1,t+1].forEach(i => { bad.pos[i].noise = .1; bad.pos[i].w = 1.18; bad.pos[i].p[bad.pos[i].call||ref[i]] *= .7; });
+    [t-1,t+1].forEach(i => { bad.pos[i].noise = .1; bad.pos[i].w = 1.18; bad.pos[i].p[ref[i]] *= .7; });
     const goods = reads.filter((_,i)=>i!==bi).map(r=>READNAME[r.id]).join(' e a ');
     answer='artefato'; cons=ref[t];
     explain = `Só a ${READNAME[bad.id]} mostra ${B(alt)}, e ali o pico é <b>baixo, largo e cercado de ruído</b>. A ${goods} mostra ${B(ref[t])} limpo. Uma "mutação" vista numa única fita, num ponto de sinal ruim, não se sustenta: mantenha ${B(ref[t])}.`;
@@ -357,9 +385,9 @@ function genRound(){
     fS = rint(68,78) - t;
     reads = [mk('F', fS), mk('R')];
     const F = reads[0];
-    F.extras.push({u:t+.5+rnd(-.15,.15), s:rnd(.75,.95), h:rnd(.95,1.2), b:alt});
+    F.extras.push({u:t+.5+rnd(-.12,.12), s:rnd(.8,.95), h:rnd(1.0,1.2), b:alt});
     F.pos[t].call = alt; F.pos[t].q = rint(7,14);
-    F.pos[t].p[ref[t]] *= .75;
+    F.pos[t].p[ref[t]] *= .8;
     [t-1,t+1].forEach(i => F.pos[i].q = rint(14,24));
     answer='artefato'; cons=ref[t];
     explain = `A leitura F está entre os pb ~${fS}–${fS+N-1}, região típica de <b>dye blob</b> (corante não incorporado que migra junto com os fragmentos). O "pico" de ${B(alt)} é muito <b>mais largo</b> que um pico normal e o pico verdadeiro de ${B(ref[t])} continua visível por baixo. A reversa confirma ${B(ref[t])}.`;
@@ -396,51 +424,10 @@ function genRound(){
     hint = 'O que tem na referência logo antes da posição? Onde começam os picos duplos na F?';
     break;
   }
-  case 'contamination': {
-    reads = [mk('F'), mk('R')];
-    reads.forEach((r,ri) => {
-      r.pos = ref.map((b,i) => {
-        const h = rnd(.55,.88);
-        const ps = pos(b,h);
-        ps.p[other(b)] = h*rnd(.35,.7);
-        ps.noise = .05;
-        return ps;
-      });
-      const ps = pos(ref[t], rnd(.6,.8));
-      ps.p[alt] = ps.p[ref[t]] * (ri===0 ? rnd(1.08,1.25) : rnd(.6,.9));
-      ps.noise = .05;
-      r.pos[t] = ps;
-    });
-    answer='indet'; cons='N';
-    explain = `Os picos duplos <b>não estão só na posição destacada</b>: aparecem em praticamente todas as bases das duas leituras. Isso indica template misturado (contaminação, amplificação inespecífica ou mais de um amplicon), não uma variante pontual. A leitura inteira fica comprometida: N no consenso e refazer PCR/sequenciamento.`;
-    tip = 'Antes de interpretar um pico duplo, olhe os vizinhos. Se tudo está duplo, o problema é a amostra.';
-    hint = 'Olhe o cromatograma inteiro, não só a coluna destacada.';
-    break;
-  }
-  case 'low_end': {
-    fS = rint(690,760); rS = rint(640,720);
-    reads = [mk('F', fS), mk('R', rS)];
-    reads.forEach(r => {
-      r.pos = ref.map(b => {
-        const ps = lowPos(.05,.22,{w:rnd(1.3,1.7), noise:.14, jit:rnd(-.2,.2)});
-        ps.p[b] = rnd(.25,.5);
-        return ps;
-      });
-    });
-    const Fp = lowPos(.08,.2,{w:1.6, noise:.14, call:alt});
-    Fp.p[alt] = rnd(.36,.45); Fp.p[ref[t]] = rnd(.25,.33);
-    reads[0].pos[t] = Fp;
-    reads[1].pos[t] = lowPos(.12,.2,{w:1.6, noise:.14, call:'N', q:rint(3,7)});
-    answer='indet'; cons='N';
-    explain = `As duas leituras cobrem esta região só pelas <b>pontas</b> (F pb ~${fS}, R pb ~${rS}), onde o sinal cai, os picos alargam e o ruído domina (Phred &lt; 20 em quase todas as bases). As fitas nem concordam entre si. Não dá para afirmar nada: N no consenso e, se a posição importa, resequenciar com um primer mais próximo.`;
-    tip = 'Faça o trim das pontas de baixa qualidade antes de alinhar. Divergência em região que seria trimada não conta.';
-    hint = 'Em que pb de cada leitura você está? Como estão as barras de qualidade?';
-    break;
-  }
   case 'dropout': {
     reads = [mk('F'), mk('R')];
     const wi = rint(0,1);
-    reads[wi].pos[t] = lowPos(.07,.15,{w:1.3, noise:.05, call:'N', q:rint(3,7)});
+    reads[wi].pos[t] = lowPos(.07,.14,{w:1.3, noise:.05, call:'N', q:rint(3,7)});
     answer='artefato'; cons=ref[t];
     explain = `A divergência é só um <b>N</b> na ${READNAME[reads[wi].id]}: uma queda local de sinal, sem nenhum pico alternativo. A ${READNAME[reads[1-wi].id]} mostra ${B(ref[t])} limpo e com Phred alto. Não há mutação: o consenso fica ${B(ref[t])}.`;
     tip = 'N sem pico alternativo não é mutação. Resolva com a outra fita.';
@@ -449,7 +436,7 @@ function genRound(){
   }
   }
   reads.forEach(finalize);
-  return {type, virus, gene, gpos, ref, t, reads, answer, cons, explain, tip, hint};
+  return {type, virus, gene, gpos, ref, t, reads, answer, cons, explain, tip, hint, chosen:null};
 }
 
 // ---------- drawing ----------
@@ -469,7 +456,7 @@ function drawRef(cv, R, cw){
   const W = cw*N, H = 46, c = setup(cv,W,H);
   c.fillStyle = HL; c.fillRect(R.t*cw, 0, cw, H);
   c.textAlign = 'center'; c.textBaseline = 'middle';
-  c.font = '500 9px Inter, sans-serif'; c.fillStyle = '#94a3b8';
+  c.font = '500 9px Inter, sans-serif';
   for (let i=0;i<N;i++){
     const n = R.gpos+i;
     if (n % 5 === 0 || i===R.t){
@@ -490,7 +477,6 @@ function drawRef(cv, R, cw){
 function drawTrack(cv, read, R, cw, dots){
   const W = cw*N, H = 130, c = setup(cv,W,H);
   c.fillStyle = HL; c.fillRect(R.t*cw, 0, cw, H);
-  // called bases
   const fs = Math.max(10, Math.min(14, cw*.44));
   c.font = `700 ${fs}px "JetBrains Mono", monospace`;
   c.textAlign = 'center'; c.textBaseline = 'middle';
@@ -500,7 +486,6 @@ function drawTrack(cv, read, R, cw, dots){
     if (dots && same){ c.fillStyle = '#94a3b8'; c.fillText('·', i*cw+cw/2, 12); }
     else { c.fillStyle = COLORS[ps.call] || '#7c3aed'; c.fillText(ps.call, i*cw+cw/2, 12); }
   });
-  // quality bars
   const qy = 40, qh = 14;
   read.pos.forEach((ps,i) => {
     c.fillStyle = '#eef2f7'; c.fillRect(i*cw+cw*.22, qy-qh, cw*.56, qh);
@@ -508,7 +493,6 @@ function drawTrack(cv, read, R, cw, dots){
     const h = Math.max(1.5, ps.q/60*qh);
     c.fillRect(i*cw+cw*.22, qy-h, cw*.56, h);
   });
-  // trace
   const top = 46, y0 = H-3, th = y0-top;
   const groups = {A:[],C:[],G:[],T:[]};
   read.g.forEach(g => groups[g.b].push(g));
@@ -534,18 +518,35 @@ function drawTrack(cv, read, R, cw, dots){
   }
 }
 
-// ---------- UI ----------
-let cur = null, roundNo = 0, answered = false;
+// ---------- quiz state ----------
+let deck = [], rounds = [], idx = 0, cur = null;
 const LABEL = {F:'Forward', R:'Reverse · complemento reverso', F2:'Forward · 2ª reação'};
+const fmt = n => n.toLocaleString('pt-BR');
 
-function buildRound(){
-  cur = genRound(); roundNo++; answered = false;
+function show(id){
+  ['intro','game','results'].forEach(s => $('#'+s).classList.toggle('hidden', s!==id));
+  window.scrollTo({top:0});
+}
+
+function startQuiz(){
+  deck = shuffled(DECK);
+  rounds = [];
+  show('game');
+  addRound();
+}
+function addRound(){
+  rounds.push(genRound(deck[rounds.length]));
+  showRound(rounds.length-1);
+}
+
+function showRound(i){
+  idx = i; cur = rounds[i];
   const R = cur;
   $('#chips').innerHTML =
     `<span class="chip v">${R.virus}</span><span class="chip g">${R.gene}</span>` +
-    `<span class="chip">nt ${R.gpos.toLocaleString('pt-BR')}–${(R.gpos+N-1).toLocaleString('pt-BR')}</span>` +
-    `<span class="chip n">${R.reads.length} leituras</span><span class="round">Desafio ${roundNo}</span>`;
-  $('#question').innerHTML = `A posição destacada (nt ${(R.gpos+R.t).toLocaleString('pt-BR')}) diverge da referência em pelo menos uma leitura. Qual é o seu veredito?` +
+    `<span class="chip">nt ${fmt(R.gpos)}–${fmt(R.gpos+N-1)}</span>` +
+    `<span class="chip n">${R.reads.length} leituras</span>`;
+  $('#question').innerHTML = `Etapa ${i+1} de ${TOTAL} · A posição destacada (nt ${fmt(R.gpos+R.t)}) diverge da referência em pelo menos uma leitura. É uma mutação real ou um artefato?` +
     `<small>Inspecione os picos de cada leitura antes de responder.</small>`;
 
   const al = $('#align'); al.innerHTML = '';
@@ -562,22 +563,29 @@ function buildRound(){
   });
 
   const ans = $('#answers'); ans.innerHTML = '';
-  ORDER.forEach((k,i) => {
+  ORDER.forEach((k,j) => {
     const a = ANSWERS[k];
     const b = document.createElement('button'); b.className = 'opt'; b.dataset.k = k;
-    b.innerHTML = `<span class="ic" style="background:${a.c}">${a.ic}</span><span><b>${a.t}</b><small>${a.s}</small></span><kbd>${i+1}</kbd>`;
+    b.innerHTML = `<span class="ic" style="background:${a.c}">${a.ic}</span><span><b>${a.t}</b><small>${a.s}</small></span><kbd>${j+1}</kbd>`;
     b.onclick = () => choose(k);
     ans.appendChild(b);
   });
   $('#hint').style.display = 'none'; $('#hint').innerHTML = '💡 ' + R.hint;
-  $('#hintBtn').style.display = '';
   const fb = $('#fb'); fb.className = 'fb'; fb.innerHTML = '';
-  $('#nextBtn').style.display = 'none';
+
+  const reviewing = i < rounds.length-1;
+  const rv = $('#review');
+  rv.style.display = reviewing ? 'block' : 'none';
+  rv.textContent = `Revendo a etapa ${i+1}. A resposta já foi registrada e não pode ser alterada.`;
+
+  if (R.chosen) renderAnswer(false);
+  else $('#hintBtn').style.display = '';
+  updateNav();
   draw();
 }
 
 function draw(){
-  if (!cur) return;
+  if (!cur || $('#game').classList.contains('hidden')) return;
   const avail = $('#align').clientWidth - 20;
   const cw = Math.max(16, Math.min(40, Math.floor(avail / N)));
   const dots = $('#dots').checked;
@@ -586,9 +594,14 @@ function draw(){
 }
 
 function choose(k){
-  if (answered) return;
-  answered = true;
-  const R = cur, ok = k === R.answer;
+  if (cur.chosen) return;
+  cur.chosen = k;
+  renderAnswer(true);
+  updateNav();
+}
+
+function renderAnswer(scroll){
+  const R = cur, k = R.chosen, ok = k === R.answer;
   document.querySelectorAll('.opt').forEach(b => {
     b.disabled = true;
     if (b.dataset.k === R.answer) b.classList.add('correct');
@@ -606,25 +619,85 @@ function choose(k){
     `<div class="facts"><span>Ref: ${B(R.ref[R.t])}</span><span>${qs}</span><span>Consenso: ${B(R.cons)}</span></div>` +
     `<div class="tip"><b>Para levar:</b> ${R.tip}</div>`;
   $('#hintBtn').style.display = 'none';
-  $('#nextBtn').style.display = 'block';
-  $('#nextBtn').focus({preventScroll:true});
-  fb.scrollIntoView({behavior:'smooth', block:'nearest'});
+  if (scroll) fb.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
-$('#startBtn').onclick = () => {
-  $('#intro').classList.add('hidden');
-  $('#game').classList.remove('hidden');
-  buildRound();
-};
-$('#nextBtn').onclick = () => { buildRound(); window.scrollTo({top:0, behavior:'smooth'}); };
+function updateNav(){
+  // progress dots
+  const pg = $('#progress'); pg.innerHTML = '<span class="lbl">Etapas</span>';
+  for (let j=0;j<TOTAL;j++){
+    const d = document.createElement('button'); d.className = 'dot'; d.textContent = j+1;
+    const r = rounds[j];
+    if (r){
+      if (r.chosen) d.classList.add(r.chosen === r.answer ? 'ok' : 'bad');
+      else d.classList.add('open');
+      d.onclick = () => showRound(j);
+      d.title = `Ir para a etapa ${j+1}`;
+    } else d.disabled = true;
+    if (j === idx) d.classList.add('cur');
+    pg.appendChild(d);
+  }
+  $('#prevBtn').disabled = idx === 0;
+  const nb = $('#nextBtn');
+  nb.classList.remove('final');
+  if (idx < rounds.length-1){
+    nb.style.visibility = 'visible';
+    nb.textContent = idx+1 === rounds.length-1 && !rounds[idx+1].chosen ? 'Voltar à etapa atual →' : 'Próxima →';
+  } else if (!cur.chosen){
+    nb.style.visibility = 'hidden';
+  } else if (rounds.length < TOTAL){
+    nb.style.visibility = 'visible'; nb.textContent = 'Próxima etapa →';
+  } else {
+    nb.style.visibility = 'visible'; nb.textContent = 'Ver resultado final →'; nb.classList.add('final');
+  }
+}
+
+function next(){
+  if (idx < rounds.length-1) showRound(idx+1);
+  else if (!cur.chosen) return;
+  else if (rounds.length < TOTAL) addRound();
+  else finish();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function prev(){
+  if (idx > 0){ showRound(idx-1); window.scrollTo({top:0, behavior:'smooth'}); }
+}
+
+function finish(){
+  const score = rounds.filter(r => r.chosen === r.answer).length;
+  let v, sub, col;
+  if (score === 10){ v = 'Excelente! 🏆'; sub = 'Gabaritou! Você já inspeciona cromatogramas com olho de especialista.'; col = '#16a34a'; }
+  else if (score > 7){ v = 'Muito bom! 🎉'; sub = 'Ótima leitura dos picos. Reveja os casos que errou e tente gabaritar.'; col = '#0ea5a4'; }
+  else if (score >= 5){ v = 'Bom! 👍'; sub = 'Você está no caminho. Reforce a comparação entre as fitas e a forma dos picos.'; col = '#0b5cad'; }
+  else { v = 'Tente novamente 💪'; sub = 'Releia o guia rápido de inspeção e jogue de novo: os casos mudam a cada partida.'; col = '#e11d48'; }
+  $('#scoreNum').innerHTML = `${score}<small>/${TOTAL}</small>`;
+  $('#verdict').textContent = v; $('#verdict').style.color = col;
+  $('#verdictSub').textContent = sub;
+  const arc = $('#ringArc'); const L = 2*Math.PI*64;
+  arc.style.stroke = col; arc.style.strokeDashoffset = L;
+  $('#rlist').innerHTML = rounds.map((r,j) => {
+    const ok = r.chosen === r.answer;
+    return `<div><span class="mk" style="background:${ok?'#16a34a':'#e11d48'}">${ok?'✓':'✗'}</span>` +
+      `<b>${j+1}.</b> ${NAMES[r.type]}<span class="meta">${r.virus} · ${ANSWERS[r.answer].t}</span></div>`;
+  }).join('');
+  show('results');
+  requestAnimationFrame(() => requestAnimationFrame(() => { arc.style.strokeDashoffset = L*(1-score/TOTAL); }));
+}
+
+$('#startBtn').onclick = startQuiz;
+$('#againBtn').onclick = startQuiz;
+$('#nextBtn').onclick = next;
+$('#prevBtn').onclick = prev;
 $('#hintBtn').onclick = () => { const h = $('#hint'); h.style.display = h.style.display==='block' ? 'none' : 'block'; };
 $('#dots').onchange = draw;
 let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(draw, 80); });
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
 document.addEventListener('keydown', e => {
-  if ($('#game').classList.contains('hidden')) { if (e.key==='Enter') $('#startBtn').click(); return; }
-  if (!answered && /^[1-4]$/.test(e.key)) choose(ORDER[+e.key-1]);
-  else if (answered && (e.key==='Enter' || e.key==='ArrowRight')) { e.preventDefault(); $('#nextBtn').click(); }
+  if (!$('#intro').classList.contains('hidden')) { if (e.key==='Enter') startQuiz(); return; }
+  if ($('#game').classList.contains('hidden')) return;
+  if (!cur.chosen && /^[12]$/.test(e.key)) choose(ORDER[+e.key-1]);
+  else if (e.key==='ArrowLeft') prev();
+  else if ((e.key==='Enter' || e.key==='ArrowRight') && $('#nextBtn').style.visibility !== 'hidden') { e.preventDefault(); next(); }
 });
 })();
 </script>
